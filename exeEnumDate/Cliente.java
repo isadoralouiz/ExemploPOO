@@ -1,4 +1,6 @@
-package exEnumDate;
+package exeEnumDate;
+
+import java.util.List;
 
 public class Cliente {
    
@@ -26,7 +28,14 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public void fazerPedido(Pedido p){
+    public Pedido fazerPedido(List<Pizza> pizza){
         
+        double valorTotal = 0;
+        for (Pizza pi : pizza) {
+            valorTotal += pi.calcularPreco();
+        }
+
+        Pedido p = new Pedido(this, pizza, valorTotal);
+        return p;
     }
 }
